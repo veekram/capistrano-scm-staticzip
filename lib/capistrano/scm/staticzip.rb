@@ -3,14 +3,14 @@ require "capistrano/scm/staticzip/version"
 
 module Capistrano
    class SCM
-     class Static < ::Capistrano::SCM::Plugin
+     class StaticZip < ::Capistrano::SCM::Plugin
        def set_defaults
        end
 
        # Define create_release task to zip, upload, uncompress and cleanup for distribution
        def define_tasks
          this_plugin = self
-         namespace :static do
+         namespace :staticzip do
            task :create_release do
              this_plugin.compress_build
              on release_roles :all do
@@ -24,7 +24,7 @@ module Capistrano
        end
 
       def register_hooks
-        after "deploy:new_release_path", "static:create_release"
+        after "deploy:new_release_path", "staticzip:create_release"
       end
 
       def compress_build
