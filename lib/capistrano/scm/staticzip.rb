@@ -1,5 +1,5 @@
 require 'capistrano/scm/plugin'
-require "capistrano/scm/static/version"
+require "capistrano/scm/staticzip/version"
 
 module Capistrano
    class SCM
